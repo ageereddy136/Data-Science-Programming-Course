@@ -1,0 +1,335 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'list'>\n",
+      "[ 2  4  6  8 10]\n",
+      "8\n"
+     ]
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "y = [3, 4, 5]\n",
+    "print(type(y))\n",
+    "\n",
+    "x = np.array([2, 4, 6, 8, 10])\n",
+    "print(x)\n",
+    "print(x[3])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'list'>\n",
+      "[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#see what happens when you try to \"add\" lists\n",
+    "#try to divide as well and see what you get\n",
+    "x1 = [1,2,3,4,5]\n",
+    "print(type(x1))\n",
+    "x2 = [1,2,3,4,5]\n",
+    "print(x1 + x2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19]\n",
+      "[ 0  2  4  6  8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38]\n",
+      "[  0   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289\n",
+      " 324 361]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# now define two numpy arrays - arange will automativally create \n",
+    "# values from 0 to 19 for each array\n",
+    "# voila, all math operations in arrays work great! try division as well\n",
+    "y1 = np.arange(20)\n",
+    "y2 = np.arange(20)\n",
+    "print(y1)\n",
+    "print(y1+y2)\n",
+    "print(y1*y2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[False False False False False False False False False False False False\n",
+      " False False False False  True  True  True  True]\n",
+      "[16 17 18 19]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# if you have a numpy array you can even derive conditional arrays \n",
+    "\n",
+    "print(y1 > 15)\n",
+    "print( y1[y1 > 15] )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# you can examine the number of dimensions and data types of numpy arrays\n",
+    "\n",
+    "print(y1.ndim) # one dimension\n",
+    "print(y1.dtype) # integer array 64 bits\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1 2]\n",
+      " [4 5]]\n",
+      "4 (2, 2) 12\n"
+     ]
+    }
+   ],
+   "source": [
+    "# two-dimensional arrays\n",
+    "y3 = np.array([[1,2],[4,5]])\n",
+    "print(y3)\n",
+    "# query size, shape of arrays and quick operations\n",
+    "print(y3.size, y3.shape, y3.sum())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x = y3.shape\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.frame.DataFrame'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "#pandas uses numpy to represent enter data frames, like a spreadsheet, or a dataset\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "iris_csv = pd.read_csv(\"iris.csv\")\n",
+    "\n",
+    "print(type(iris_csv))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   sepal_length  sepal_width  petal_length  petal_width species\n",
+      "0           5.1          3.5           1.4          0.2  setosa\n",
+      "1           4.9          3.0           1.4          0.2  setosa\n",
+      "2           4.7          3.2           1.3          0.2  setosa\n",
+      "3           4.6          3.1           1.5          0.2  setosa\n",
+      "4           5.0          3.6           1.4          0.2  setosa\n",
+      "5           5.4          3.9           1.7          0.4  setosa\n",
+      "6           4.6          3.4           1.4          0.3  setosa\n",
+      "7           5.0          3.4           1.5          0.2  setosa\n",
+      "8           4.4          2.9           1.4          0.2  setosa\n",
+      "9           4.9          3.1           1.5          0.1  setosa\n"
+     ]
+    }
+   ],
+   "source": [
+    "# head and describe return top few rows and summary stats\n",
+    "print(iris_csv.head(10))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Great (but long) overview of different ways you can select rows and columns in pandas\n",
+    "\n",
+    "https://medium.com/dunder-data/selecting-subsets-of-data-in-pandas-6fcd0170be9c\n",
+    "\n",
+    "Also go through basic pandas data frame tutorial below\n",
+    "\n",
+    "https://github.com/adeshpande3/Pandas-Tutorial/blob/master/Pandas%20Tutorial.ipynb"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 28,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.indexes.base.Index'> sepal_length\n",
+      "<class 'pandas.core.series.Series'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "#use dot columns method on the data frame to get the column names\n",
+    "#use brackets notation to pull out a column\n",
+    "x = iris_csv.columns\n",
+    "print(type(x),x[0])\n",
+    "print(type(iris_csv['sepal_length']))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "x = iris_csv.columns"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Index(['sepal_length', 'sepal_width', 'petal_length', 'petal_width',\n",
+      "       'species'],\n",
+      "      dtype='object') <class 'pandas.core.indexes.base.Index'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(x, type(x))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'pandas.core.series.Series'>\n",
+      "<class 'pandas.core.series.Series'>\n",
+      "<class 'pandas.core.series.Series'>\n",
+      "<class 'pandas.core.series.Series'>\n",
+      "<class 'pandas.core.series.Series'>\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in x:\n",
+    "    print(type(iris_csv[i]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# to retrive a row of data use index location (iloc) function with row number\n",
+    "print(iris_csv.iloc[0])\n",
+    "#accessing a row and column\n",
+    "print(iris_csv['sepal_length'].iloc[0])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#to access a subset of rows and columns, first create names of colums\n",
+    "cols = iris_csv[['sepal_length', 'sepal_width']]\n",
+    "print(cols.iloc[5:20])\n",
+    "\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
